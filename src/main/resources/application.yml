@@ -1,0 +1,37 @@
+server:
+  port: 8081
+  servlet:
+    context-path: /rocketmqStudy
+
+spring:
+  application:
+    name: rocketmqStudy
+  profiles:
+      active: dev
+
+mybatis:
+  typeAliasesPackage: com.estranger.www.rocketmq.bean
+  mapper-locations: classpath*:config/mapper/*Mapper.xml
+  configuration:
+          log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+#producer
+rocketmq:
+  producer:
+    isOnOff: on #��Ӧ���Ƿ�����������
+    groupName: ${spring.application.name}
+    maxMessageSize: 4096
+    sendMsgTimeout: 3000
+    retryTimesWhenSendFailed: 2
+    namesrvAddr: 192.168.4.40:9876
+    producerGroup: order_trans_group
+    topic: order
+
+  consumer:
+    isOnOff: off
+    groupName: ${spring.application.name}
+    consumeThreadMin: 20
+    consumeThreadMax: 64
+    consumeMessageBatchMaxSize: 1
+    namesrvAddr: 192.168.4.40:9876
+    consumerGroup: consumer_group

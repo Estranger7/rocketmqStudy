@@ -1,0 +1,11 @@
+spring:
+  datasource:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://192.168.1.86:3306/rocketmq_mct?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+      username: root
+      password: "jinbei"
+      type: com.zaxxer.hikari.HikariDataSource
+      hikari:
+        maximum-pool-size: 15
+
+
